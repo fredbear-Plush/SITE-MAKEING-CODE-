@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash Karts Launcher</title>
+    <style>
+        /* Modern, centered page layout */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #121212; /* Dark, sleek background */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Improved, modern button style */
+        .c-button {
+            appearance: none;
+            border: none;
+            border-radius: 12px; /* Smoother, modern rounded corners */
+            background: linear-gradient(135deg, #4682B4, #2a5d88); /* Subtle premium gradient */
+            color: #ffffff;
+            padding: 16px 40px; /* Better proportions */
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(70, 130, 180, 0.4); /* Soft glow effect */
+            transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+        }
+
+        /* Interactive hover state */
+        .c-button:hover {
+            background: linear-gradient(135deg, #5394cb, #3471a3);
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 6px 20px rgba(70, 130, 180, 0.6);
+        }
+
+        /* Active click state */
+        .c-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(70, 130, 180, 0.4);
+        }
+
+        /* Focus state for accessibility */
+        .c-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(203, 214, 238, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="c-button">Play Smash Karts</button>
+
+    <script>
+        var url = " PUT CODE HERE ";
+
+        if (url) {
+            var win;
+
+            document.querySelector('.c-button').onclick = function() {
+                if (win && !win.closed) {
+                    win.focus();
+                } else {
+                    win = window.open('about:blank', '_blank');
+                    if (win) {
+                        win.document.body.style.margin = '0';
+                        win.document.body.style.height = '100vh';
+                        win.document.body.style.overflow = 'hidden'; // Prevents double scrollbars
+                        
+                        var iframe = win.document.createElement('iframe');
+                        iframe.style.border = 'none';
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.margin = '0';
+                        iframe.src = url;
+                        
+                        win.document.body.appendChild(iframe);
+
+                        var interval = setInterval(function() {
+                            if (win.closed) {
+                                clearInterval(interval);
+                                win = undefined;
+                            }
+                        }, 500);
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+</html>
