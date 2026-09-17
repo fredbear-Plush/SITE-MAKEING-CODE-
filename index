@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smash Karts Launcher</title>
+    <title>  </title>
+<!-- PUT NAME ABOVE  / TITLE LIKE NAME LAUNCHER BETWEEN two titles -->
     <style>
         /* Modern, centered page layout */
         body {
@@ -55,10 +56,11 @@
 </head>
 <body>
 
-    <button class="c-button">Play Smash Karts</button>
-
+    <button class="c-button">   </button>
+<!--  PUT NAME ABOVE BETWEEN THE TWO > < -->
     <script>
-        var url = " PUT CODE HERE ";
+        var url = " ";
+<!-- PUT CODE ABOVE HERE IN " "s -->
 
         if (url) {
             var win;
